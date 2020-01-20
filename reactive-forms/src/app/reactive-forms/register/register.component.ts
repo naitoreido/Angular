@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
+import { User } from '../models/user';
+
 @Component({
   selector: 'rf-register',
   templateUrl: './register.component.html',
@@ -9,6 +11,7 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   private userForm: FormGroup;
+  private user: User;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -22,6 +25,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public save(){
-    console.log(this.userForm.value);
+    this.user = Object.assign({}, this.user, this.userForm.value);
+    console.log(this.user);
   }
 }
